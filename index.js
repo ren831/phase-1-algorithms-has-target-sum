@@ -1,11 +1,10 @@
 function hasTargetSum(array, target) {
-  for (let i = 0; i < array.length; i++) {
-    const complement = target - array[i];
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[j] === complement) {
-        return true;
-      }
-    }
+  const seeNumbers = {};
+
+  for (const number of array) {
+    const complement = target - number;
+    if (seeNumbers[complement]) return true;
+    seeNumbers[number] = true;
   }
   return false;
 }
